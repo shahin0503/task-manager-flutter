@@ -34,6 +34,9 @@ class _DeleteTaskAlertDialogState extends State<DeleteTaskAlertDialog> {
           ElevatedButton(onPressed: (){
             Navigator.of(context).pop(false);
           }, 
+          style: ElevatedButton.styleFrom(
+            primary: Colors.grey,
+          ),
           child: const Text('Cancel')),
           ElevatedButton(onPressed: (){
             _deleteTasks();
