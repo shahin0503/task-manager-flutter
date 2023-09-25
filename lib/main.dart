@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:taskmanager/views/task_view.dart';
-
+import 'package:taskmanager/views/home_view.dart';
 import 'constants/routes.dart';
 import 'services/auth/auth_service.dart';
 import 'views/login_view.dart';
 import 'views/register_view.dart';
 import 'views/verify_email_view.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(
-    MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(),
-      routes: {
-        loginRoute: (context) => const LoginView(),
-        registerRoute: (context) => const RegisterView(),
-        tasksRoute: (context) => const TasksView(),
-        verifyEmailRoute: (context) => const VerifyEmailView(),
-      },
-    ),
-  );
+  runApp(MaterialApp(
+    title: 'Flutter Demo',
+    home: const HomePage(),
+    routes: {
+      loginRoute: (context) => const LoginView(),
+      registerRoute: (context) => const RegisterView(),
+      tasksRoute: (context) => const TasksView(),
+      verifyEmailRoute: (context) => const VerifyEmailView(),
+    },
+  ));
 }
 
 class HomePage extends StatelessWidget {

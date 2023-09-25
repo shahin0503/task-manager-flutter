@@ -1,12 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../constants/routes.dart';
 import '../enums/menu_action.dart';
 import '../services/auth/auth_service.dart';
 import '../utilities/add_task_dialog.dart';
-import 'categories.dart';
-import 'task.dart';
+import 'settings_view.dart';
+import 'dashboard_view.dart';
 
 class TasksView extends StatefulWidget {
   const TasksView({super.key});
@@ -21,9 +20,14 @@ class _TasksViewState extends State<TasksView> {
 
   @override
   Widget build(BuildContext context) {
+        final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('To-Do List'),
+        
+        title:  Text('To-Do List', style: TextStyle(
+          color: theme.textTheme.bodyText1?.color,
+        ),),
         actions: [
           PopupMenuButton<MenuAction>(
             onSelected: (value) async {
@@ -69,8 +73,6 @@ class _TasksViewState extends State<TasksView> {
           height: kBottomNavigationBarHeight,
           child: BottomNavigationBar(
             currentIndex: _selectedIndex,
-            selectedItemColor: Colors.brown,
-            unselectedItemColor: Colors.black,
             onTap: (index) {
               setState(() {
                 _selectedIndex = index;
@@ -79,11 +81,11 @@ class _TasksViewState extends State<TasksView> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.square_list),
+                icon: Icon(Icons.home),
                 label: '',
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.tag),
+                icon: Icon(Icons.settings),
                 label: '',
               ),
             ],
@@ -97,7 +99,7 @@ class _TasksViewState extends State<TasksView> {
             child: Tasks(),
           ),
           Center(
-            child: Categories(),
+            child: SettingsView(),
           ),
         ],
       ),
